@@ -36,14 +36,14 @@ public class SendSMSActivity extends Activity {
 		String number ="";
 		PhoneListDao summaryDao = new PhoneListDao(SendSMSActivity.this);
 		listSummary = summaryDao.selectAll();
-		SmsManager smsManager = SmsManager.getDefault();
-		smsManager
-				.sendTextMessage(
-						listSummary.get(0).getPhoneNumber().toString(),
-						null,
-						txt_content.getText().toString(),
-						null, null);
-		Log.d(TAG,listSummary.get(0).getPhoneNumber() +": "+txt_content.getText().toString());
+//		SmsManager smsManager = SmsManager.getDefault();
+//		smsManager
+//				.sendTextMessage(
+//						listSummary.get(0).getPhoneNumber().toString(),
+//						null,
+//						txt_content.getText().toString(),
+//						null, null);
+//		Log.d(TAG,listSummary.get(0).getPhoneNumber() +": "+txt_content.getText().toString());
 		for (ContactItem item : listSummary) {
 //			ContentValues values = new ContentValues();
 //			values.put("address", item.getPhoneNumber());// sender name
@@ -63,7 +63,7 @@ public class SendSMSActivity extends Activity {
 		}
 		
 		summaryDao.close();
-		//sendSMS(number);
+		sendSMS(number);
 	}
 	 protected void sendSMS(String number) {
 	      Log.i("Send SMS", "");
