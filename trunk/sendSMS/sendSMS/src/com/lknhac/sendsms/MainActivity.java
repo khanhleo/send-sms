@@ -30,7 +30,7 @@ public class MainActivity extends Activity {
     
     public void clickInsertData(View view) {
     	File root = Environment.getExternalStorageDirectory();
-    	fileName = root.getAbsolutePath() +"/SendSMS"+"/phonelist.csv";
+    	fileName = root.getAbsolutePath() +"/SendSMS"+"/2.1.csv";
     	try {
 			insertData(fileName);
 			Toast.makeText(getApplicationContext(), "done", Toast.LENGTH_SHORT).show();
@@ -44,6 +44,12 @@ public class MainActivity extends Activity {
 	public void clickCheckData(View view){
 		Intent intent = new Intent(MainActivity.this, ListData.class);
 		startActivity(intent);
+	}
+	
+	public void clickClearData(View view){
+		PhoneListDao phoneListDao = new PhoneListDao(getApplicationContext());
+		phoneListDao.deleteAll();
+		phoneListDao.close();
 	}
 	
 	public void clickSend(View view){
@@ -63,7 +69,7 @@ public class MainActivity extends Activity {
     	    ContactItem contactItem = new ContactItem();
     	    
     	    contactItem.setStt(str[0]);
-    	    contactItem.setPhoneNumber(str[1]);  	    
+    	    contactItem.setPhoneNumber(str[2]);  	    
     	    phoneListDao.insertRow(contactItem);   	    
     	}
     	buffer.close();

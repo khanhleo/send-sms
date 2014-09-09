@@ -30,6 +30,13 @@
         android:layout_below="@+id/btn_insert_data"
         android:layout_toRightOf="@+id/btn_send"
         android:onClick="clickCheckData"/>
+    <Button 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Xoa du lieu"
+        android:layout_below="@+id/btn_insert_data"
+        android:layout_toRightOf="@+id/btn_check_data"
+        android:onClick="clickClearData"/>
 
 
 </RelativeLayout>
