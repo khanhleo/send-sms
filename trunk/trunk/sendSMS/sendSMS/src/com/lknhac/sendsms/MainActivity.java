@@ -1,20 +1,74 @@
 package com.lknhac.sendsms;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
+
+import com.lknhac.sendsms.data.PhoneListDao;
+import com.lknhac.sendsms.object.ContactItem;
 
 
 public class MainActivity extends Activity {
 
+	private String fileName="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // test revisions
     }
+    
+    public void clickInsertData(View view) {
+    	File root = Environment.getExternalStorageDirectory();
+    	fileName = root.getAbsolutePath() +"/SendSMS"+"/phonelist.csv";
+    	try {
+			insertData(fileName);
+			Toast.makeText(getApplicationContext(), "done", Toast.LENGTH_SHORT).show();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			Toast.makeText(getApplicationContext(), "fail", Toast.LENGTH_SHORT).show();
+		}
+    }
+    
+	public void clickCheckData(View view){
+		Intent intent = new Intent(MainActivity.this, ListData.class);
+		startActivity(intent);
+	}
+	
+	public void clickSend(View view){
+		Intent intent = new Intent(MainActivity.this, SendSMSActivity.class);
+		startActivity(intent);
+	}
+    private void insertData(String fileName) throws IOException{
+    	FileReader file = new FileReader(fileName);
+    	BufferedReader buffer = new BufferedReader(file);
+    	String line = "";
 
+    	PhoneListDao phoneListDao = new PhoneListDao(getApplicationContext());
+    	while ((line = buffer.readLine()) != null) {
+    	    String[] str = line.split(",");
+    	    
+    	    
+    	    ContactItem contactItem = new ContactItem();
+    	    
+    	    contactItem.setStt(str[0]);
+    	    contactItem.setPhoneNumber(str[1]);  	    
+    	    phoneListDao.insertRow(contactItem);   	    
+    	}
+    	buffer.close();
+    	phoneListDao.close();		
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

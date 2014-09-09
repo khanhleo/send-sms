@@ -8,15 +8,28 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.lknhac.sendsms.MainActivity" >
 
-    <TextView
-        android:id="@+id/txt_test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+
     <Button 
+        android:id="@+id/btn_insert_data"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="test"
-        android:layout_below="@+id/txt_test"/>
+        android:text="Nạp dữ liệu"
+        android:onClick="clickInsertData"/>
+    <Button 
+        android:id="@+id/btn_send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gửi"
+        android:layout_below="@+id/btn_insert_data"
+        android:onClick="clickSend"/>
+    <Button 
+        android:id="@+id/btn_check_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kiểm tra"
+        android:layout_below="@+id/btn_insert_data"
+        android:layout_toRightOf="@+id/btn_send"
+        android:onClick="clickCheckData"/>
+
 
 </RelativeLayout>
