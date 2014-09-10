@@ -2,15 +2,19 @@ package com.lknhac.sendsms.data;
 
 public class DbConstraint {
 	public static final String DATABASE_NAME = "sendsms.db"; 
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 2;
         	
 	// Fields of EXCEPTIONS table
 	public static final String EXCEPTIONS = "phonelist";
+	public static final String CLASS = "class";
+	public static final String CLASS_DETAILS = "class_details";
 	public static final String STT = "stt";
 	public static final String NAME = "name";
 	public static final String PHONES = "phones";
 	public static final String CREATE_TABLE_EXCEPTION_VERSION = "CREATE VIRTUAL TABLE "
 			+ EXCEPTIONS + " USING FTS3(" +
+			CLASS + " TEXT, " +
+			CLASS_DETAILS + " TEXT, " +
 			STT + " TEXT, " +
 			NAME + " TEXT, " + 			
 			PHONES + " TEXT)";

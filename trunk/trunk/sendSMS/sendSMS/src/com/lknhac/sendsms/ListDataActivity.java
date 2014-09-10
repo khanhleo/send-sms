@@ -1,5 +1,6 @@
 package com.lknhac.sendsms;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,37 +18,70 @@ import android.widget.Toast;
 
 import com.lknhac.sendsms.data.PhoneListDao;
 import com.lknhac.sendsms.object.ContactItem;
+import com.lknhac.sendsms.util.Const;
+import com.lknhac.sendsms.util.HandleData;
 
 
-public class ListData extends Activity {
+public class ListDataActivity extends Activity {
 	private List<ContactItem> listSummary;
-	private ContactItem sumItem;
-	// private List<String> lName;
-	// private List<String> lTime;
-	// private List<Integer> lIcon;
-	// private List<String> lColor;
 	private SummaryAdapter adapter;
-
-//	public static SummaryItem summaryItem;
+	private String mClass;
+	private String mClassDetails;
+	private ListView listView;
 	
 	 @Override
 	    protected void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
+	        
 	        setContentView(R.layout.summary);
-	        // test revisions
-	        PhoneListDao summaryDao = new PhoneListDao(ListData.this);
-			listSummary = summaryDao.selectAll();
-			//init();
-			// getList(listSummary);
-			final ListView listView = (ListView) findViewById(R.id.lvSummary);
+	        PhoneListDao summaryDao = new PhoneListDao(ListDataActivity.this);
+	        listView = (ListView) findViewById(R.id.lvSummary);   
+	        Bundle extras = getIntent().getExtras();
+	        if (extras != null) {
+		         mClass= extras.getString(Const.CLASS);
+		         mClassDetails = extras.getString(Const.CLASS_DETAILS);
+		         Toast.makeText(getApplicationContext(), mClass +":-:"+mClassDetails, Toast.LENGTH_SHORT).show();
+		         if (mClass!= null) {
+		        	 if(mClassDetails !=null){
+		        		 listSummary = summaryDao.selectForClassDetails(mClassDetails);
+		        		 if(listSummary!=null && listSummary.size()>0){
+		        			 init();		        			 
+		        		 }
+		        	 }
+		         }   
+	        }
+	        
+	 }
+	 
+	 // onClick
+	 public void clickInsertData(View view) {
+	    	String fileName = HandleData.getFilePath(ListDataActivity.this, mClass, mClassDetails);
+	    	try {
+	    		HandleData.insertData(ListDataActivity.this, fileName,mClass,mClassDetails);
+				Toast.makeText(getApplicationContext(), "done", Toast.LENGTH_SHORT).show();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				Toast.makeText(getApplicationContext(), "fail", Toast.LENGTH_SHORT).show();
+			}
+	    }
+	    
+		public void clickCheckData(View view){
+			if(listSummary!=null && listSummary.size()>0){
+				init();
+			}else
+				Toast.makeText(getApplicationContext(), "không có dữ liệu", Toast.LENGTH_SHORT).show();
+		}
+		
+	 private void init(){
+		 
+		 	
 			adapter = new SummaryAdapter(this);
 			listView.setAdapter(adapter);
 			adapter.setListContact(listSummary);
 			adapter.notifyDataSetChanged();
-		//	Utils.setListViewHeightBasedOnChildren(listView);
 			listView.setDivider(null);
 			listView.setDividerHeight(0);
-			Toast.makeText(getApplicationContext(), listSummary.get(0).getPhoneNumber(), Toast.LENGTH_SHORT).show();
 	 }
 	 
 	private class SummaryAdapter extends BaseAdapter {

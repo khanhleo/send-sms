@@ -27,13 +27,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.lknhac.sendsms.ListData"
+            android:name="com.lknhac.sendsms.ListDataActivity"
             android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name="com.lknhac.sendsms.SendSMSActivity"
             android:screenOrientation="portrait" >
-               
+        </activity>
+        <activity
+            android:name="com.lknhac.sendsms.ListClassActitvity"
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 

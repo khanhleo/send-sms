@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -25,7 +26,14 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        
         // test revisions
+    }
+    
+    private void checkIsHasData(){
+    	PhoneListDao summaryDao = new PhoneListDao(MainActivity.this);
+    	List<ContactItem> listSummary = summaryDao.selectAll();
     }
     
     public void clickInsertData(View view) {
@@ -41,8 +49,12 @@ public class MainActivity extends Activity {
 		}
     }
     
+    public void clickClass(View view){
+    	Intent intent = new Intent(MainActivity.this, ListClassActitvity.class);
+		startActivity(intent);
+    }
 	public void clickCheckData(View view){
-		Intent intent = new Intent(MainActivity.this, ListData.class);
+		Intent intent = new Intent(MainActivity.this, ListDataActivity.class);
 		startActivity(intent);
 	}
 	

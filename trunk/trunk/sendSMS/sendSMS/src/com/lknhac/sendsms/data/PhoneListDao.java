@@ -14,6 +14,8 @@ public class PhoneListDao extends DaoBase {
 
 	private final static String tableName = DbConstraint.EXCEPTIONS;
 	private String [] mColumns= new String[] {
+			DbConstraint.CLASS,
+			DbConstraint.CLASS_DETAILS,
 			DbConstraint.STT,
 			DbConstraint.NAME,
 			DbConstraint.PHONES,
@@ -29,6 +31,8 @@ public class PhoneListDao extends DaoBase {
 	
 	public long insertRow(ContactItem rowData) {
 		ContentValues values = new ContentValues();
+		values.put(DbConstraint.CLASS, rowData.getmClass());
+		values.put(DbConstraint.CLASS_DETAILS, rowData.getmClassDetails());
 		values.put(DbConstraint.STT, rowData.getStt());
 		values.put(DbConstraint.NAME, rowData.getContactName());
 		values.put(DbConstraint.PHONES, rowData.getPhoneNumber());
@@ -58,6 +62,32 @@ public class PhoneListDao extends DaoBase {
 			
 		   cursor = this.db.query(tableName, mColumns, null, 
 				    null, null, null, null);		      
+		  
+		   if (cursor.moveToFirst()) {
+			   do {
+			    	rowData = new ContactItem();		    	
+			    	rowData.setStt(cursor.getString(cursor.getColumnIndex(DbConstraint.STT)));
+			    	rowData.setPhoneNumber(cursor.getString(cursor.getColumnIndex(DbConstraint.PHONES)));
+			    	result.add(rowData);
+				} while (cursor.moveToNext());
+		   }
+		  
+	   } finally {
+		   if(cursor != null)
+			   cursor.close();
+	   }
+	   
+	   return result;
+	}
+	
+	public List<ContactItem> selectForClassDetails(String mClassDetails) {
+		List<ContactItem> result = new ArrayList<ContactItem>();
+		ContactItem rowData =  null;
+		Cursor cursor = null;
+		try {
+			
+		   cursor = this.db.query(tableName, mColumns,DbConstraint.CLASS_DETAILS + " = ?",
+					new String[] { mClassDetails }, null, null, null);		      
 		  
 		   if (cursor.moveToFirst()) {
 			   do {

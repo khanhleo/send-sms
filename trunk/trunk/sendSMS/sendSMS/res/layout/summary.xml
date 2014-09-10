@@ -6,6 +6,40 @@
     android:orientation="vertical"
     tools:context=".Summary" >
 
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp" >
+
+        <Button
+            android:id="@+id/btn_insert_data"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="clickInsertData"
+            android:text="Nạp dữ liệu" />
+
+        <Button
+            android:id="@+id/btn_check_data"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_insert_data"
+            android:layout_toRightOf="@+id/btn_send"
+            android:layout_weight="1"
+            android:onClick="clickCheckData"
+            android:text="Kiểm tra" />
+
+        <Button
+            android:id="@+id/btn_send"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_insert_data"
+            android:layout_weight="1"
+            android:onClick="clickSend"
+            android:text="Gửi" />
+    </LinearLayout>
+
     <ListView
         android:id="@+id/lvSummary"
         android:layout_width="fill_parent"
