@@ -40,6 +40,36 @@
             android:text="Gửi" />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Từ:" />
+
+        <EditText
+            android:id="@+id/txt_from"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Nhập số"
+            android:inputType="number" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đến:" />
+
+        <EditText
+            android:id="@+id/txt_to"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Nhập số"
+            android:inputType="number" />
+    </LinearLayout>
+
     <ListView
         android:id="@+id/lvSummary"
         android:layout_width="fill_parent"
