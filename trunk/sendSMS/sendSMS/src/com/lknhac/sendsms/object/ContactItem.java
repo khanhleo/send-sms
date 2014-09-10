@@ -8,12 +8,27 @@ import java.util.List;
 public class ContactItem implements Serializable {
 	private static final long serialVersionUID = -2572310233833415125L;
 	
+	public String mClass;
+	public String mClassDetails;
 	public String contactName;
 	public String phoneNumber;
 	public String stt;
 	public List<String> numbers = new ArrayList<String>();
 	public boolean isExist;
 	
+	
+	public String getmClass() {
+		return mClass;
+	}
+	public void setmClass(String mClass) {
+		this.mClass = mClass;
+	}
+	public String getmClassDetails() {
+		return mClassDetails;
+	}
+	public void setmClassDetails(String mClassDetails) {
+		this.mClassDetails = mClassDetails;
+	}
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
