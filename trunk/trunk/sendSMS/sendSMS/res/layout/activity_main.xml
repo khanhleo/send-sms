@@ -10,7 +10,7 @@
 
 
     <Button 
-        android:visibility="gone"
+        android:visibility="visible"
         android:id="@+id/btn_insert_data"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -18,7 +18,7 @@
         android:onClick="clickInsertData"
         />
     <Button 
-         android:visibility="gone"
+         android:visibility="visible"
         android:id="@+id/btn_send"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
