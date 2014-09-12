@@ -5,4 +5,46 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
+    <!-- Class -->
+    <string name="khoi_2">Khối 2</string>
+    <string name="khoi_3">Khối 3</string>
+    <string name="khoi_4">Khối 4</string>
+    <string name="khoi_5">Khối 5</string>
+    
+	<!--    Class Details -->
+    <string name="lop_21">Lớp 2.1</string>
+    <string name="lop_22">Lớp 2.2</string>
+    <string name="lop_23">Lớp 2.3</string>
+    <string name="lop_24">Lớp 2.4</string>
+    <string name="lop_25">Lớp 2.5</string>
+    <string name="lop_26">Lớp 2.6</string>
+    <string name="lop_27">Lớp 2.7</string>
+    <string name="lop_28">Lớp 2.8</string>
+    
+    <string name="lop_31">Lớp 3.1</string>
+    <string name="lop_32">Lớp 3.2</string>
+    <string name="lop_33">Lớp 3.3</string>
+    <string name="lop_34">Lớp 3.4</string>
+    <string name="lop_35">Lớp 3.5</string>
+    <string name="lop_36">Lớp 3.6</string>
+    <string name="lop_37">Lớp 3.7</string>
+    
+    <string name="lop_41">Lớp 4.1</string>
+    <string name="lop_42">Lớp 4.2</string>
+    <string name="lop_43">Lớp 4.3</string>
+    <string name="lop_44">Lớp 4.4</string>
+    <string name="lop_45">Lớp 4.5</string>
+    <string name="lop_46">Lớp 4.6</string>
+    <string name="lop_47">Lớp 4.7</string>
+    
+    <string name="lop_51">Lớp 5.1</string>
+    <string name="lop_52">Lớp 5.2</string>
+    <string name="lop_53">Lớp 5.3</string>
+    <string name="lop_54">Lớp 5.4</string>
+    <string name="lop_55">Lớp 5.5</string>
+    <string name="lop_56">Lớp 5.6</string>
+    <string name="lop_57">Lớp 5.7</string>
+    
+    
+    
 </resources>

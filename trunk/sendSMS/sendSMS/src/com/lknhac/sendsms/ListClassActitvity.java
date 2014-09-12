@@ -122,48 +122,48 @@ public class ListClassActitvity extends Activity {
 		listDataChild = new HashMap<String, List<String>>();
 
 		// Adding child data
-		listDataHeader.add("Khối 2");
-		listDataHeader.add("Khối 3");
-		listDataHeader.add("Khối 4");
-		listDataHeader.add("Khối 5");
+		listDataHeader.add(getString(R.string.khoi_2));
+		listDataHeader.add(getString(R.string.khoi_3));
+		listDataHeader.add(getString(R.string.khoi_4));
+		listDataHeader.add(getString(R.string.khoi_5));
 
 		// Adding child data
 		List<String> Khoi2 = new ArrayList<String>();
-		Khoi2.add("Lớp 2.1");
-		Khoi2.add("Lớp 2.2");
-		Khoi2.add("Lớp 2.3");
-		Khoi2.add("Lớp 2.4");
-		Khoi2.add("Lớp 2.5");
-		Khoi2.add("Lớp 2.6");
-		Khoi2.add("Lớp 2.7");
-		Khoi2.add("Lớp 2.8");
+		Khoi2.add(getString(R.string.lop_21));
+		Khoi2.add(getString(R.string.lop_22));
+		Khoi2.add(getString(R.string.lop_23));
+		Khoi2.add(getString(R.string.lop_24));
+		Khoi2.add(getString(R.string.lop_25));
+		Khoi2.add(getString(R.string.lop_26));
+		Khoi2.add(getString(R.string.lop_27));
+		Khoi2.add(getString(R.string.lop_28));
 
 		List<String> Khoi3 = new ArrayList<String>();
-		Khoi3.add("Lớp 3.1");
-		Khoi3.add("Lớp 3.2");
-		Khoi3.add("Lớp 3.3");
-		Khoi3.add("Lớp 3.4");
-		Khoi3.add("Lớp 3.5");
-		Khoi3.add("Lớp 3.6");
-		Khoi3.add("Lớp 3.7");
+		Khoi3.add(getString(R.string.lop_31));
+		Khoi3.add(getString(R.string.lop_32));
+		Khoi3.add(getString(R.string.lop_33));
+		Khoi3.add(getString(R.string.lop_34));
+		Khoi3.add(getString(R.string.lop_35));
+		Khoi3.add(getString(R.string.lop_36));
+		Khoi3.add(getString(R.string.lop_37));
 
 		List<String> Khoi4 = new ArrayList<String>();
-		Khoi4.add("Lớp 4.1");
-		Khoi4.add("Lớp 4.2");
-		Khoi4.add("Lớp 4.3");
-		Khoi4.add("Lớp 4.4");
-		Khoi4.add("Lớp 4.5");
-		Khoi4.add("Lớp 4.6");
-		Khoi4.add("Lớp 4.7");
+		Khoi4.add(getString(R.string.lop_41));
+		Khoi4.add(getString(R.string.lop_42));
+		Khoi4.add(getString(R.string.lop_43));
+		Khoi4.add(getString(R.string.lop_44));
+		Khoi4.add(getString(R.string.lop_45));
+		Khoi4.add(getString(R.string.lop_46));
+		Khoi4.add(getString(R.string.lop_47));
 
 		List<String> Khoi5 = new ArrayList<String>();
-		Khoi5.add("Lớp 5.1");
-		Khoi5.add("Lớp 5.2");
-		Khoi5.add("Lớp 5.3");
-		Khoi5.add("Lớp 5.4");
-		Khoi5.add("Lớp 5.5");
-		Khoi5.add("Lớp 5.6");
-		Khoi5.add("Lớp 5.7");
+		Khoi5.add(getString(R.string.lop_51));
+		Khoi5.add(getString(R.string.lop_52));
+		Khoi5.add(getString(R.string.lop_53));
+		Khoi5.add(getString(R.string.lop_54));
+		Khoi5.add(getString(R.string.lop_55));
+		Khoi5.add(getString(R.string.lop_56));
+		Khoi5.add(getString(R.string.lop_57));
 
 		listDataChild.put(listDataHeader.get(0), Khoi2); // Header, Child data
 		listDataChild.put(listDataHeader.get(1), Khoi3);

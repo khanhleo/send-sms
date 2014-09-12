@@ -38,7 +38,7 @@ public class MainActivity extends Activity {
     
     public void clickInsertData(View view) {
     	File root = Environment.getExternalStorageDirectory();
-    	fileName = root.getAbsolutePath() +"/SendSMS"+"/2.1.csv";
+    	fileName = root.getAbsolutePath() +"/SendSMS"+"/phonelist.csv";
     	try {
 			insertData(fileName);
 			Toast.makeText(getApplicationContext(), "done", Toast.LENGTH_SHORT).show();
@@ -80,8 +80,9 @@ public class MainActivity extends Activity {
     	    
     	    ContactItem contactItem = new ContactItem();
     	    
+    	    contactItem.setmClassDetails("6.1");
     	    contactItem.setStt(str[0]);
-    	    contactItem.setPhoneNumber(str[2]);  	    
+    	    contactItem.setPhoneNumber(str[1]);  	    
     	    phoneListDao.insertRow(contactItem);   	    
     	}
     	buffer.close();

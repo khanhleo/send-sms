@@ -66,7 +66,7 @@ public class ListDataActivity extends Activity {
 	// onClick
 	public void clickInsertData(View view) {
 		if (listSummary != null && listSummary.size() > 0) {
-			Toast.makeText(getApplicationContext(), "đã có dữ liệu không thể thêm nữa",
+			Toast.makeText(getApplicationContext(), "Ä‘Ã£ cÃ³ dá»¯ liá»‡u khÃ´ng thá»ƒ thÃªm ná»¯a",
 					Toast.LENGTH_SHORT)
 			.show();
 		}else{
@@ -105,7 +105,7 @@ public class ListDataActivity extends Activity {
 
 			init();
 		} else {
-			Toast.makeText(getApplicationContext(), "không có dữ liệu",
+			Toast.makeText(getApplicationContext(), "không có dá»¯ liá»‡u",
 					Toast.LENGTH_SHORT).show();
 		}
 
@@ -122,12 +122,12 @@ public class ListDataActivity extends Activity {
 			Log.d("ListDataActivity", numbers);
 			String strContent = "";
 			if (mClass.equals("2") || mClass.equals("5"))
-				strContent = "Trường tiểu học Bình Đa: Mời quý phụ huynh đến trường họp vào lúc 8 giờ ngày 14/9/2014.";
+				strContent = "TrÆ°á»�ng tiá»ƒu há»�c BÃ¬nh Ä�a: Má»�i quÃ½ phá»¥ huynh Ä‘áº¿n trÆ°á»�ng há»�p vÃ o lÃºc 8 giá»� ngÃ y 14/9/2014.";
 			else
-				strContent = "Trường tiểu học Bình Đa: Mời quý phụ huynh đến trường họp vào lúc 9 giờ 15 ngày 14/9/2014.";
+				strContent = "TrÆ°á»�ng tiá»ƒu há»�c BÃ¬nh Ä�a: Má»�i quÃ½ phá»¥ huynh Ä‘áº¿n trÆ°á»�ng há»�p vÃ o lÃºc 9 giá»� 15 ngÃ y 14/9/2014.";
 			HandleData.sendSMS(ListDataActivity.this, numbers, strContent);
 		} else {
-			Toast.makeText(getApplicationContext(), "không có dữ liệu để gửi",
+			Toast.makeText(getApplicationContext(), "khÃ´ng cÃ³ dá»¯ liá»‡u Ä‘á»ƒ gá»­i",
 					Toast.LENGTH_SHORT).show();
 		}
 	}
