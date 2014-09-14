@@ -11,13 +11,17 @@ public class DbConstraint {
 	public static final String STT = "stt";
 	public static final String NAME = "name";
 	public static final String PHONES = "phones";
+	public static final String TOAN = "toan";
+	public static final String TIENG_VIET = "tieng_viet";
 	public static final String CREATE_TABLE_EXCEPTION_VERSION = "CREATE VIRTUAL TABLE "
 			+ EXCEPTIONS + " USING FTS3(" +
 			CLASS + " TEXT, " +
 			CLASS_DETAILS + " TEXT, " +
 			STT + " TEXT, " +
-			NAME + " TEXT, " + 			
-			PHONES + " TEXT)";
+			NAME + " TEXT, " +
+			PHONES + " TEXT, " +
+			TOAN + " TEXT, " +
+			TIENG_VIET + " TEXT)";
 	
 //	// Fields of SUMMARY table
 //	public static final String SUMMARY = "summary";

@@ -31,11 +31,38 @@ public class HandleData {
 			String[] str = line.split(",");
 			ContactItem contactItem = new ContactItem();
 			contactItem.setStt(str[0]);
-			if (str.length > 2) {				
+			if (str.length > 2) {
 				contactItem.setPhoneNumber(str[2]);
-			}else{
+			} else {
 				contactItem.setPhoneNumber("");
 			}
+			contactItem.setmClass(mClass);
+			contactItem.setmClassDetails(mClassDetails);
+			phoneListDao.insertRow(contactItem);
+		}
+		buffer.close();
+		phoneListDao.close();
+	}
+
+	public static void insertSeparateData(Context context, String fileName,
+			String mClass, String mClassDetails) throws IOException {
+		FileReader file = new FileReader(fileName);
+		BufferedReader buffer = new BufferedReader(file);
+		String line = "";
+
+		PhoneListDao phoneListDao = new PhoneListDao(context);
+		while ((line = buffer.readLine()) != null) {
+			String[] str = line.split(",");
+			ContactItem contactItem = new ContactItem();
+			contactItem.setStt(str[0]);
+			contactItem.setContactName(str[1]);
+			if (str.length > 2) {
+				contactItem.setPhoneNumber(str[2]);
+			} else {
+				contactItem.setPhoneNumber("");
+			}
+			contactItem.setmToan(str[3]);
+			contactItem.setmTiengViet(str[4]);
 			contactItem.setmClass(mClass);
 			contactItem.setmClassDetails(mClassDetails);
 			phoneListDao.insertRow(contactItem);
@@ -85,22 +112,23 @@ public class HandleData {
 		}
 	}
 
-	public static String getNumbers(Context context, String mClassDetails,int from,int to) {
+	public static String getNumbers(Context context, String mClassDetails,
+			int from, int to) {
 		String numbers = "";
 		List<ContactItem> listSummary = new ArrayList<ContactItem>();
 		PhoneListDao summaryDao = new PhoneListDao(context);
 		listSummary = summaryDao.selectForClassDetails(mClassDetails);
 
-//		for (ContactItem item : listSummary) {
-//
-//			numbers += item.getPhoneNumber() + ";";
-//		}
-		int mTo=to;
-		if(listSummary.size()<to){
+		// for (ContactItem item : listSummary) {
+		//
+		// numbers += item.getPhoneNumber() + ";";
+		// }
+		int mTo = to;
+		if (listSummary.size() < to) {
 			mTo = listSummary.size();
 		}
-		for(int i=from;i<mTo;i++){
-			numbers += listSummary.get(i).getPhoneNumber()+";";
+		for (int i = from; i < mTo; i++) {
+			numbers += listSummary.get(i).getPhoneNumber() + ";";
 		}
 
 		summaryDao.close();

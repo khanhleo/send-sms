@@ -4,11 +4,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,14 +26,16 @@ import com.lknhac.sendsms.object.ContactItem;
 import com.lknhac.sendsms.util.Const;
 import com.lknhac.sendsms.util.HandleData;
 
+@SuppressLint("UnlocalizedSms")
 public class ListDataActivity extends Activity {
 	private List<ContactItem> listSummary;
 	private SummaryAdapter adapter;
 	private String mClass;
 	private String mClassDetails;
 	private ListView listView;
-	private int mFrom =0, mTo=0;
-	private EditText txtFrom,txtTo;
+	private int mFrom = 0, mTo = 0;
+	private EditText txtFrom, txtTo;
+	private static final String TAG = "ListDataActivity";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +45,8 @@ public class ListDataActivity extends Activity {
 		PhoneListDao summaryDao = new PhoneListDao(ListDataActivity.this);
 		listView = (ListView) findViewById(R.id.lvSummary);
 		txtFrom = (EditText) findViewById(R.id.txt_from);
-		txtTo =(EditText) findViewById(R.id.txt_to);
-		
+		txtTo = (EditText) findViewById(R.id.txt_to);
+
 		Bundle extras = getIntent().getExtras();
 		if (extras != null) {
 			mClass = extras.getString(Const.CLASS);
@@ -66,16 +70,17 @@ public class ListDataActivity extends Activity {
 	// onClick
 	public void clickInsertData(View view) {
 		if (listSummary != null && listSummary.size() > 0) {
-			Toast.makeText(getApplicationContext(), "Ä‘Ã£ cÃ³ dá»¯ liá»‡u khÃ´ng thá»ƒ thÃªm ná»¯a",
-					Toast.LENGTH_SHORT)
-			.show();
-		}else{
-			
+			Toast.makeText(
+					getApplicationContext(),
+					"Ã„â€˜ÃƒÂ£ cÃƒÂ³ dÃ¡Â»Â¯ liÃ¡Â»â€¡u khÃƒÂ´ng thÃ¡Â»Æ’ thÃƒÂªm nÃ¡Â»Â¯a",
+					Toast.LENGTH_SHORT).show();
+		} else {
+
 			String fileName = HandleData.getFilePath(ListDataActivity.this,
 					mClass, mClassDetails);
 			try {
-				HandleData.insertData(ListDataActivity.this, fileName, mClass,
-						mClassDetails);
+				HandleData.insertSeparateData(ListDataActivity.this, fileName,
+						mClass, mClassDetails);
 				Toast.makeText(getApplicationContext(), "done",
 						Toast.LENGTH_SHORT).show();
 				PhoneListDao summaryDao = new PhoneListDao(
@@ -87,8 +92,7 @@ public class ListDataActivity extends Activity {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				Toast.makeText(getApplicationContext(), "fail",
-						Toast.LENGTH_SHORT)
-				.show();
+						Toast.LENGTH_SHORT).show();
 			}
 		}
 	}
@@ -105,30 +109,63 @@ public class ListDataActivity extends Activity {
 
 			init();
 		} else {
-			Toast.makeText(getApplicationContext(), "không có dá»¯ liá»‡u",
-					Toast.LENGTH_SHORT).show();
+			Toast.makeText(getApplicationContext(),
+					"khÃ´ng cÃ³ dÃ¡Â»Â¯ liÃ¡Â»â€¡u", Toast.LENGTH_SHORT).show();
 		}
 
 	}
 
 	public void clickSend(View view) {
 		if (listSummary != null && listSummary.size() > 0) {
+
+//			mFrom = Integer.parseInt(txtFrom.getText().toString()) - 1;
+//			mTo = Integer.parseInt(txtTo.getText().toString());
+//
+//			String numbers = HandleData.getNumbers(ListDataActivity.this,
+//					mClassDetails, mFrom, mTo);
+//			Log.d("ListDataActivity", numbers);
+//			String strContent = "";
+//			if (mClass.equals("2") || mClass.equals("5"))
+//				strContent = "TrÃ†Â°Ã¡Â»ï¿½ng tiÃ¡Â»Æ’u hÃ¡Â»ï¿½c BÃƒÂ¬nh Ã„ï¿½a: MÃ¡Â»ï¿½i quÃƒÂ½ phÃ¡Â»Â¥ huynh Ã„â€˜Ã¡ÂºÂ¿n trÃ†Â°Ã¡Â»ï¿½ng hÃ¡Â»ï¿½p vÃƒÂ o lÃƒÂºc 8 giÃ¡Â»ï¿½ ngÃƒÂ y 14/9/2014.";
+//			else
+//				strContent = "TrÃ†Â°Ã¡Â»ï¿½ng tiÃ¡Â»Æ’u hÃ¡Â»ï¿½c BÃƒÂ¬nh Ã„ï¿½a: MÃ¡Â»ï¿½i quÃƒÂ½ phÃ¡Â»Â¥ huynh Ã„â€˜Ã¡ÂºÂ¿n trÃ†Â°Ã¡Â»ï¿½ng hÃ¡Â»ï¿½p vÃƒÂ o lÃƒÂºc 9 giÃ¡Â»ï¿½ 15 ngÃƒÂ y 14/9/2014.";
+//			HandleData.sendSMS(ListDataActivity.this, numbers, strContent);
 			
-			mFrom = Integer.parseInt(txtFrom.getText().toString())-1;
-			mTo = Integer.parseInt(txtTo.getText().toString());
+			sendData();
 			
-			String numbers = HandleData.getNumbers(ListDataActivity.this,
-					mClassDetails,mFrom,mTo);
-			Log.d("ListDataActivity", numbers);
-			String strContent = "";
-			if (mClass.equals("2") || mClass.equals("5"))
-				strContent = "TrÆ°á»�ng tiá»ƒu há»�c BÃ¬nh Ä�a: Má»�i quÃ½ phá»¥ huynh Ä‘áº¿n trÆ°á»�ng há»�p vÃ o lÃºc 8 giá»� ngÃ y 14/9/2014.";
-			else
-				strContent = "TrÆ°á»�ng tiá»ƒu há»�c BÃ¬nh Ä�a: Má»�i quÃ½ phá»¥ huynh Ä‘áº¿n trÆ°á»�ng há»�p vÃ o lÃºc 9 giá»� 15 ngÃ y 14/9/2014.";
-			HandleData.sendSMS(ListDataActivity.this, numbers, strContent);
 		} else {
-			Toast.makeText(getApplicationContext(), "khÃ´ng cÃ³ dá»¯ liá»‡u Ä‘á»ƒ gá»­i",
+			Toast.makeText(getApplicationContext(),
+					"khÃƒÂ´ng cÃƒÂ³ dÃ¡Â»Â¯ liÃ¡Â»â€¡u Ã„â€˜Ã¡Â»Æ’ gÃ¡Â»Â­i",
 					Toast.LENGTH_SHORT).show();
+		}
+	}
+
+	private void sendData() {
+		if (listSummary != null && listSummary.size() > 0) {
+			for (ContactItem item : listSummary) {
+
+				try {
+					SmsManager smsManager = SmsManager.getDefault();
+					ArrayList<String> parts = smsManager.divideMessage(item
+							.getContactName()
+							+ "- Kiểm tra chât lượng đầu năm Toán: "
+							+ item.getmToan()
+							+ " Tiếng Việt: "
+							+ item.getmTiengViet());
+					smsManager.sendMultipartTextMessage(item.getPhoneNumber(),
+							null, parts, null, null);
+					Log.v(TAG, "SMS Sent!");
+					Log.v(TAG, item
+							.getContactName()
+							+ "- Kiểm tra chât lượng đầu năm Toán: "
+							+ item.getmToan()
+							+ " Tiếng Việt: "
+							+ item.getmTiengViet());
+				} catch (Exception e) {
+					e.printStackTrace();
+					Log.v(TAG, "SMS faild");
+				}
+			}
 		}
 	}
 
@@ -178,8 +215,12 @@ public class ListDataActivity extends Activity {
 
 			TextView itemName = (TextView) v.findViewById(R.id.itemSummaryName);
 			TextView itemStt = (TextView) v.findViewById(R.id.itemSummaryStt);
+			TextView itemContent = (TextView) v.findViewById(R.id.itemSummaryContent);
 
-			itemName.setText(contactItem.getPhoneNumber());
+			itemName.setText(contactItem.getContactName());
+			if(contactItem.getmTiengViet()!=null){
+				itemContent.setText("Toán: "+ contactItem.getmToan() +"- Tiếng Việt: "+ contactItem.getmTiengViet());
+			}
 			final View itemColor = v.findViewById(R.id.itemSummaryColor);
 			if (position % 2 != 0)
 				itemColor.setBackgroundColor(Color
