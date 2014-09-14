@@ -40,7 +40,7 @@ public class SendSMSActivity extends Activity {
 		listSummary = summaryDao.selectForClassDetails("6.1");
 		try {
 			SmsManager smsManager = SmsManager.getDefault();
-			ArrayList<String> parts = smsManager.divideMessage("Nguyễn Văn A Lớp 2.1 Toán:9 Văn:9 Tiếng Việt:6 Thể dục:10 Sức khỏe:8 Công dân:9");
+			ArrayList<String> parts = smsManager.divideMessage("");
 			smsManager.sendMultipartTextMessage("01228760657", null, parts, null, null);
 //			smsManager.sendTextMessage("01228760657", null, , null,
 //					null);

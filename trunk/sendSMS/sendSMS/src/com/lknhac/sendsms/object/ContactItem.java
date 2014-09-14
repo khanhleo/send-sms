@@ -13,10 +13,25 @@ public class ContactItem implements Serializable {
 	public String contactName;
 	public String phoneNumber;
 	public String stt;
+	public String mToan;
+	public String mTiengViet;
 	public List<String> numbers = new ArrayList<String>();
 	public boolean isExist;
 	
 	
+	
+	public String getmToan() {
+		return mToan;
+	}
+	public void setmToan(String mToan) {
+		this.mToan = mToan;
+	}
+	public String getmTiengViet() {
+		return mTiengViet;
+	}
+	public void setmTiengViet(String mTiengViet) {
+		this.mTiengViet = mTiengViet;
+	}
 	public String getmClass() {
 		return mClass;
 	}

@@ -39,5 +39,20 @@
         android:text="John Smith"
         android:textColor="@color/black"
         android:textSize="@dimen/label_text_size_medium" />
+    <TextView
+        android:id="@+id/itemSummaryContent"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="11dp"
+        android:layout_weight="0.27"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:gravity="left"
+        android:text="Kiem tra chat luong dau nam Toan:6 Tieng Viet: 7"
+        android:ellipsize="end"
+        android:textColor="@color/black"
+        android:textSize="@dimen/label_text_size_medium" />
 
 </LinearLayout>
