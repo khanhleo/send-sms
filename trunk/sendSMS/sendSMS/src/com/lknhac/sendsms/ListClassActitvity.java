@@ -85,8 +85,8 @@ public class ListClassActitvity extends Activity {
 			public boolean onChildClick(ExpandableListView parent, View v,
 					int groupPosition, int childPosition, long id) {
 				// TODO Auto-generated method stub
-				String mClass= String.valueOf(groupPosition + 2);
-				String mClassDetails = String.valueOf(groupPosition + 2) + "."
+				String mClass= String.valueOf(groupPosition + 1);
+				String mClassDetails = String.valueOf(groupPosition + 1) + "."
 						+ String.valueOf(childPosition+1);
 				
 				Bundle bundle = new Bundle();
@@ -121,13 +121,23 @@ public class ListClassActitvity extends Activity {
 		listDataHeader = new ArrayList<String>();
 		listDataChild = new HashMap<String, List<String>>();
 
-		// Adding child data
+		// Adding header data
+		listDataHeader.add(getString(R.string.khoi_1));
 		listDataHeader.add(getString(R.string.khoi_2));
 		listDataHeader.add(getString(R.string.khoi_3));
 		listDataHeader.add(getString(R.string.khoi_4));
 		listDataHeader.add(getString(R.string.khoi_5));
 
 		// Adding child data
+		List<String> Khoi1 = new ArrayList<String>();
+		Khoi1.add(getString(R.string.lop_11));
+		Khoi1.add(getString(R.string.lop_12));
+		Khoi1.add(getString(R.string.lop_13));
+		Khoi1.add(getString(R.string.lop_14));
+		Khoi1.add(getString(R.string.lop_15));
+		Khoi1.add(getString(R.string.lop_16));
+		Khoi1.add(getString(R.string.lop_17));
+		
 		List<String> Khoi2 = new ArrayList<String>();
 		Khoi2.add(getString(R.string.lop_21));
 		Khoi2.add(getString(R.string.lop_22));
@@ -165,9 +175,10 @@ public class ListClassActitvity extends Activity {
 		Khoi5.add(getString(R.string.lop_56));
 		Khoi5.add(getString(R.string.lop_57));
 
-		listDataChild.put(listDataHeader.get(0), Khoi2); // Header, Child data
-		listDataChild.put(listDataHeader.get(1), Khoi3);
-		listDataChild.put(listDataHeader.get(2), Khoi4);
-		listDataChild.put(listDataHeader.get(3), Khoi5);
+		listDataChild.put(listDataHeader.get(0), Khoi1);
+		listDataChild.put(listDataHeader.get(1), Khoi2); // Header, Child data
+		listDataChild.put(listDataHeader.get(2), Khoi3);
+		listDataChild.put(listDataHeader.get(3), Khoi4);
+		listDataChild.put(listDataHeader.get(4), Khoi5);
 	}
 }
