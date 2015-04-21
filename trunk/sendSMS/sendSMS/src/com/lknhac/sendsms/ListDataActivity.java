@@ -25,13 +25,14 @@ import com.lknhac.sendsms.util.Const;
 import com.lknhac.sendsms.util.HandleData;
 
 public class ListDataActivity extends Activity {
-	private List<ContactItem> listSummary;
+	private List<ContactItem> listSummary; 
 	private SummaryAdapter adapter;
 	private String mClass;
 	private String mClassDetails;
 	private ListView listView;
 	private int mFrom = 0, mTo = 0;
 	private EditText txtFrom, txtTo;
+	private TextView txtLop;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,15 +43,17 @@ public class ListDataActivity extends Activity {
 		listView = (ListView) findViewById(R.id.lvSummary);
 		txtFrom = (EditText) findViewById(R.id.txt_from);
 		txtTo = (EditText) findViewById(R.id.txt_to);
+		txtLop = (TextView) findViewById(R.id.txt_lop);
 
 		Bundle extras = getIntent().getExtras();
 		if (extras != null) {
 			mClass = extras.getString(Const.CLASS);
 			mClassDetails = extras.getString(Const.CLASS_DETAILS);
-			Toast.makeText(getApplicationContext(),
-					mClass + ":-:" + mClassDetails, Toast.LENGTH_SHORT).show();
+//			Toast.makeText(getApplicationContext(),
+//					mClass + ":-:" + mClassDetails, Toast.LENGTH_SHORT).show();
 			if (mClass != null) {
 				if (mClassDetails != null) {
+					txtLop.setText("Lop: "+mClassDetails);
 					listSummary = summaryDao
 							.selectForClassDetails(mClassDetails);
 					summaryDao.close();
@@ -126,10 +129,16 @@ public class ListDataActivity extends Activity {
 						mClassDetails, mFrom, mTo);
 				Log.d("ListDataActivity", numbers);
 				String strContent = "";
-				if (mClass.equals("2") || mClass.equals("5"))
-					strContent = getResources().getString(R.string.content);
-				else
-					strContent = getResources().getString(R.string.content);
+				if (mClass.equals("1"))
+					strContent = getResources().getString(R.string.content_1);
+				else if(mClass.equals("2"))
+					strContent = getResources().getString(R.string.content_2);
+				else if(mClass.equals("3"))
+					strContent = getResources().getString(R.string.content_3);
+				else if(mClass.equals("4"))
+					strContent = getResources().getString(R.string.content_4);
+				else if(mClass.equals("5"))
+					strContent = getResources().getString(R.string.content_5);
 				HandleData.sendSMS(ListDataActivity.this, numbers, strContent);
 			}else{
 				Toast.makeText(getApplicationContext(),

@@ -5,11 +5,15 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="no_data">Không có dữ liệu</string>
-    <string name="no_data_to_send">Không có dữ liệu để gửi</string>
     <string name="can_not_insert">Đã có dữ liệu, không thể thêm nữa</string>
+    <string name="no_data_to_send">Không có dữ liệu để gửi</string>
     <string name="please_input_number">Hãy nhập số lượng gửi</string>
     <string name="content">Trường TH Bình Đa xin thông báo: Từ ngày 15/10/2014, giáo viên không chấm điểm hàng ngày trên vở HS. Chỉ phê nhận xét bằng lời</string>
-
+	<string name="content_1">Trường TH Bình Đa xin thông báo: HS nghỉ lễ từ ngày 27/4 đến hết ngày 03/5. Sáng ngày 13/5, HS khối 1 thi môn Toán và Tiếng Việt.</string>
+	<string name="content_2">Trường T.H Bình Đa thông báo: HS nghỉ lễ từ ngày 27/4 đến hết ngày 03/5. Sáng ngày 14/5, HS khối 2 thi môn Toán và Tiếng Việt.</string>
+	<string name="content_3">Trường T.H Bình Đa thông báo: HS nghỉ lễ từ ngày 27/4 đến hết ngày 03/5. HS khối 3 thi môn tiếng Anh (chiều 5,6/5); Toán và Tiếng Việt (chiều 14/5).</string>
+	<string name="content_4">Trường T.H Bình Đa thông báo: HS nghỉ lễ từ ngày 27/4 đến hết ngày 03/5. HS khối 4 thi môn Khoa học(chiều 5/5); LS và ĐL(chiều 6/5); tiếng Anh(chiều 6,7/5); Toán và Tiếng Việt (sáng 13/5).</string>
+	<string name="content_5">Trường T.H Bình Đa thông báo: HS nghỉ lễ từ ngày 27/4 đến hết ngày 03/5. HS khối 5 thi môn Khoa học(chiều 5/5); LS và ĐL(chiều 6/5); tiếng Anh(chiều7,8/5)Toán và Tiếng Việt(sáng+chiều 12/5).</string>
     <!-- Class -->
     <string name="khoi_1">Khối 1</string>
     <string name="khoi_2">Khối 2</string>
